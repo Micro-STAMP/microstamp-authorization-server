@@ -1,6 +1,6 @@
 package microstamp.authorization.configuration;
 
-import microstamp.authorization.data.User;
+import microstamp.authorization.entity.User;
 import microstamp.authorization.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
