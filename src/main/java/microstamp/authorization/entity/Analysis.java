@@ -7,7 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Types;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity(name = "Analysis")
@@ -31,5 +30,10 @@ public class Analysis {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Analysis(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
 }

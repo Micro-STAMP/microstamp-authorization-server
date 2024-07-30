@@ -1,10 +1,10 @@
 package microstamp.authorization.service.impl;
 
+import microstamp.authorization.dto.AnalysisInsertDto;
 import microstamp.authorization.dto.AnalysisReadDto;
 import microstamp.authorization.dto.AnalysisUpdateDto;
 import microstamp.authorization.entity.Analysis;
 import microstamp.authorization.entity.User;
-import microstamp.authorization.dto.AnalysisInsertDto;
 import microstamp.authorization.exception.NotFoundException;
 import microstamp.authorization.mapper.AnalysisMapper;
 import microstamp.authorization.repository.AnalysisRepository;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,9 +49,7 @@ public class AnalysisServiceImpl implements AnalysisService {
         User user = userRepository.findById(analysisInsertDto.getUserId())
                 .orElseThrow(() -> new NotFoundException("User", analysisInsertDto.getUserId().toString()));
 
-        Analysis analysis = new Analysis();
-        analysis.setName(analysisInsertDto.getName());
-        analysis.setDescription(analysisInsertDto.getDescription());
+        Analysis analysis = AnalysisMapper.toEntity(analysisInsertDto);
 
         user.getAnalyses().add(analysis);
         analysisRepository.save(analysis);

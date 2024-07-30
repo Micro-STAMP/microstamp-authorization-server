@@ -3,8 +3,6 @@ package microstamp.authorization.dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 public class AnalysisUpdateDto {
 
