@@ -2,16 +2,20 @@ package microstamp.authorization.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Types;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity(name = "Analysis")
 @Table(name = "analyses")
 @Data
+@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Analysis {
 
     @Id
@@ -24,8 +28,7 @@ public class Analysis {
     private String description;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

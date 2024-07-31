@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 @Data
@@ -17,7 +17,7 @@ public class AnalysisReadDto {
 
     private String description;
 
-    private LocalDateTime creationDate;
+    private Instant creationDate;
 
     @NotNull
     private UUID userId;

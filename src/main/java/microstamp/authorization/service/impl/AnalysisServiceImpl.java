@@ -50,8 +50,8 @@ public class AnalysisServiceImpl implements AnalysisService {
                 .orElseThrow(() -> new NotFoundException("User", analysisInsertDto.getUserId().toString()));
 
         Analysis analysis = AnalysisMapper.toEntity(analysisInsertDto);
+        analysis.setUser(user);
 
-        user.getAnalyses().add(analysis);
         analysisRepository.save(analysis);
 
         return AnalysisMapper.toDto(analysis);
@@ -61,8 +61,8 @@ public class AnalysisServiceImpl implements AnalysisService {
         Analysis analysis = analysisRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Analysis", id.toString()));
 
-        analysis.setName(analysis.getName());
-        analysis.setDescription(analysis.getDescription());
+        analysis.setName(analysisUpdateDto.getName());
+        analysis.setDescription(analysisUpdateDto.getDescription());
 
         analysisRepository.save(analysis);
     }
