@@ -1,7 +1,7 @@
 package microstamp.authorization.configuration;
 
-import microstamp.authorization.data.Role;
-import microstamp.authorization.data.User;
+import microstamp.authorization.entity.Role;
+import microstamp.authorization.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -57,6 +57,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
 }
